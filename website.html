@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatprints - Modern Animated Poster Paradise</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .poster-row {
+            position: absolute;
+            display: flex;
+            animation: moveRow 60s linear infinite;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .poster-row:hover {
+            opacity: 1;
+        }
+
+        .poster {
+            width: 150px;
+            height: 225px;
+            margin: 0 20px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poster:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .poster::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .poster:hover::after {
+            opacity: 1;
+        }
+
+        .poster-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-size: 0.9em;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(10px);
+            z-index: 1;
+        }
+
+        .poster:hover .poster-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes moveRow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.16);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            font-size: 1.2em;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 10px;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .templates-section {
+            padding: 50px 20px;
+        }
+
+        .template {
+            display: flex;
+            align-items: center;
+            margin-bottom: 50px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .template-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .template-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .template-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .template:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+    </style>
+</head>
+<body>
+    <header style="position: fixed; background-color: #fff; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 200; width: 98%;">
+        <div style="display: flex; align-items: center;">
+            <!-- Logo -->
+            <img src="logo.png" alt="Posterforge Logo" style="height: 50px; margin-right: 20px;">
+            
+            <!-- Navigation Links -->
+            <nav>
+                <a href="#about" style="margin-right: 20px; text-decoration: none; color: #333; font-weight: 600;">About Us</a>
+                <a href="#shop" style="margin-right: 20px; text-decoration: none; color: #333; font-weight: 600;">Shop</a>
+                <a href="#track-order" style="margin-right: 20px; text-decoration: none; color: #333; font-weight: 600;">Track Order</a>
+            </nav>
+        </div>
+        
+        <div style="display: flex; align-items: center;">
+            <!-- Search Button -->
+            <button style="background: none; border: none; margin-right: 20px; cursor: pointer;">
+                <img src="search-icon.png" alt="Search" style="height: 24px;">
+            </button>
+            
+            <!-- Cart Button -->
+            <button style="background: none; border: none; cursor: pointer;">
+                <img src="cart-icon.png" alt="Cart" style="height: 24px;">
+            </button>
+        </div>
+    </header>
+    <div class="container" id="posterContainer"></div>
+    <div class="overlay" id="overlay">
+        <h1>Posterforge</h1>
+        <p>Decorate Your Space with Posters that speak to you.</p>
+        <div>
+            <button class="btn" id="shopNow">Shop Now</button>
+        </div>
+    </div>
+
+    <div class="templates-section" id="templatesSection">
+        <div class="template">
+            <div class="template-content">
+                <h2>Style 1: Minimalist Beats</h2>
+                <p>Clean lines and bold typography define this sleek, modern design. Perfect for showcasing your favorite artist or album in a contemporary setting.</p>
+                <button class="btn">Generate Your Custom Poster</button>
+            </div>
+            <div class="template-image">
+                <img src="/api/placeholder/400/600?text=Style+1" alt="Style 1 Example">
+            </div>
+        </div>
+        <div class="template">
+            <div class="template-content">
+                <h2>Style 2: Retro Vibes</h2>
+                <p>Channel the golden age of music with this vintage-inspired design. Ideal for classic albums and timeless artists, bringing a touch of nostalgia to any room.</p>
+                <button class="btn">Generate Your Custom Poster</button>
+            </div>
+            <div class="template-image">
+                <img src="/api/placeholder/400/600?text=Style+2" alt="Style 2 Example">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const posterImages = [
+            { url: '/api/placeholder/150/225?text=Rock', title: 'Rock Legends' },
+            { url: '/api/placeholder/150/225?text=Jazz', title: 'Jazz Classics' },
+            { url: '/api/placeholder/150/225?text=Blues', title: 'Blues Masters' },
+            { url: '/api/placeholder/150/225?text=Hip+Hop', title: 'Hip Hop Icons' },
+            { url: '/api/placeholder/150/225?text=Classical', title: 'Classical Composers' },
+            { url: '/api/placeholder/150/225?text=Country', title: 'Country Stars' },
+            { url: '/api/placeholder/150/225?text=Pop', title: 'Pop Sensations' },
+            { url: '/api/placeholder/150/225?text=Metal', title: 'Metal Mayhem' },
+            { url: '/api/placeholder/150/225?text=Reggae', title: 'Reggae Rhythms' },
+            { url: '/api/placeholder/150/225?text=Electronic', title: 'Electronic Beats' }
+        ];
+
+        function createPosterElement(posterInfo) {
+            const poster = document.createElement('div');
+            poster.className = 'poster';
+            poster.style.backgroundImage = `url(${posterInfo.url})`;
+            
+            const title = document.createElement('div');
+            title.className = 'poster-title';
+            title.textContent = posterInfo.title;
+            poster.appendChild(title);
+
+            return poster;
+        }
+
+        function createPosterRow(yPosition, direction) {
+            const row = document.createElement('div');
+            row.className = 'poster-row';
+            row.style.top = `${yPosition}px`;
+            row.style.animationDirection = direction;
+
+            const shuffledPosters = [...posterImages].sort(() => 0.5 - Math.random());
+            const postersNeeded = Math.ceil(window.innerWidth / 170) * 2 + 1;
+
+            for (let i = 0; i < postersNeeded; i++) {
+                row.appendChild(createPosterElement(shuffledPosters[i % shuffledPosters.length]));
+            }
+
+            return row;
+        }
+
+        function populatePosters() {
+            const container = document.getElementById('posterContainer');
+            container.innerHTML = '';
+            const rowCount = Math.ceil(window.innerHeight / 245);
+            
+            for (let i = 0; i < rowCount; i++) {
+                const yPosition = i * 245;
+                const direction = i % 2 === 0 ? 'normal' : 'reverse';
+                container.appendChild(createPosterRow(yPosition, direction));
+            }
+        }
+
+        populatePosters();
+
+        window.addEventListener('resize', populatePosters);
+
+        // Show overlay on page load
+        
+
+        // Handle button clicks
+        document.getElementById('shopNow').addEventListener('click', () => {
+            window.scrollTo({
+                top: document.getElementById('templatesSection').offsetTop,
+                behavior: 'smooth'
+            });
+        });
+
+        
+    </script>
+
+</body>
+</html>
